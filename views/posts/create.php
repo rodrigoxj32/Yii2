@@ -5,13 +5,13 @@ use yii\helpers\ArrayHelper;
 use app\models\Posts;
 ?>
 
-
-    <h1>Register</h1>
+    <h1>Crear</h1>
 <?php $form = ActiveForm::begin([
     'method' => 'post',
     'id' => 'formulario',
     'enableClientValidation' => false,
     //'enableAjaxValidation' => true,
+
 ]);
 ?>
     <div class="form-group">
@@ -29,7 +29,15 @@ use app\models\Posts;
 
 
 
-
 <?= Html::submitButton("Register", ["class" => "btn btn-primary"]) ?>
 
 <?php $form->end() ?>
+
+<?=Html::script("
+    $('#posts-titulo').click(
+   function() {
+        alert();
+    });
+
+",
+    ['defer' => true])  ?>
