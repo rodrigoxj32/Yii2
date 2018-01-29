@@ -33,7 +33,8 @@ use app\models\Posts;
 
 
 
-<?= Html::submitButton("Register", ["class" => "btn btn-primary"]) ?>
+<?= Html::submitButton("Register", ["class" => "btn btn-primary",]) ?>
+
 
 <?php $form->end() ?>
 
