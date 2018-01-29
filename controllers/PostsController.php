@@ -5,9 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\Posts;
 use app\models\SearchPosts;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * PostsController implements the CRUD actions for Posts model.
@@ -42,6 +44,23 @@ class PostsController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    /**
+     * @return mixed;
+    */
+    public function actionCurso($titulo){
+
+        $title = Posts::find()->all();
+        //$title = Posts::findOne($titulo);
+
+        echo json::encode($title);
+
+
+        //return $this->redirect('index');
+
+//        return $this->render('post/index');
     }
 
     /**
@@ -132,4 +151,7 @@ class PostsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
 }
