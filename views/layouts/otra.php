@@ -25,19 +25,19 @@
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+    <link rel="icon" sizes="192x192" href="/images/android-desktop.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ios-desktop.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="/images/favicon.png">
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
@@ -47,7 +47,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+            integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+            crossorigin=""/>
     <style>
     #view-source {
       position: fixed;
@@ -58,6 +63,7 @@
       margin-bottom: 40px;
       z-index: 900;
     }
+    #map { height: 180px; }
     </style>
   </head>
   <body>
@@ -177,5 +183,39 @@
       </svg>
       <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">View Source</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+            integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+
+  <script>
+      var map = L.map('map', {
+          layers: [
+              L.tileLayer('https://api.mapbox.com/styles/v1/goseta/cj9hlgmjna0fn2rlgisg1n1no/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ29zZXRhIiwiYSI6ImNqOGc1ajQzZDBjNGMycXJ3ZXBqaHNlNjgifQ.Z9M_JYdDVfwABKH6jGbRFQ', {
+                  id: 'mapbox.streets'
+              })
+          ],
+          center: [13.7008617, -89.2288614],
+          zoom: 13
+      });
+
+
+      $.get('/site/get-range',  function(res) {
+
+
+
+          var array = JSON.parse("[" + res + "]");
+
+         array[0].forEach(function (value) {
+             var latlngs = [[13.57505933072751,-89.29078893530648],[13.57765512872909,-89.27750946914372],[13.59250392451492,-89.25720417517661],[13.6164145752801,-89.27719416980679],[13.63221845079416,-89.26696816208403],[13.65045683453148,-89.22326371207942],[13.63924564038607,-89.19267659790637],[13.64904615274604,-89.14836725723816],[13.66885887351888,-89.1745184189775],[13.69811777816281,-89.18812131083962],[13.73384721180194,-89.20268045836178],[13.742776896582,-89.23773598769641],[13.68378935848226,-89.31959889692199],[13.58258178341583,-89.30298380801179],[13.57505933072751,-89.29078893530648]];
+             var polygon = L.polygon(value, {color: 'red'}).addTo(map);
+         })
+          
+
+          //console.log((latlngs));
+      });
+
+
+  </script>
   </body>
 </html>
