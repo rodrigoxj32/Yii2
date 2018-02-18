@@ -20,20 +20,6 @@ $this->title = 'My Yii Application';
             <div class="col-lg-4">
                 <h2>Heading</h2>
 
-                <?php
-                $array = array(
-                    "foo" => "bar",
-                    42    => 24,
-                    "multi" => array(
-                        "dimensional" => array(
-                            "array" => "foo"
-                        )
-                    )
-                );
-                    $variable = "algo";
-
-                    print('<h1>hola mundo '.$array["multi"]["dimensional"]["array"].'</h1>');
-                ?>
 
 
 
