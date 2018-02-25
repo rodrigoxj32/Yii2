@@ -63,6 +63,8 @@ class SiteController extends Controller
     {   
         $this->layout = 'otra';
 
+        $hola;
+
         return $this->render('index');
     }
 
