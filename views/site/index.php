@@ -26,6 +26,7 @@ $this->title = 'My Yii Application';
             <div class="col-lg-4">
                 <h2>Heading</h2>
 
+<<<<<<< HEAD
                 <?php
                 
                     if (isset($_SERVER["HTTP_CLIENT_IP"]))
@@ -57,10 +58,17 @@ $this->title = 'My Yii Application';
                 
                     
                 ?>
+=======
+
+
+
+>>>>>>> e00c3fb9cae755e18d7fb125cc7baa3d8e2041c9
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
             <div class="col-lg-4">
+                <div id="map"></div>
+
                 <h2>Heading</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
